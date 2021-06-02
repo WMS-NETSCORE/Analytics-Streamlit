@@ -6,7 +6,7 @@ warnings.filterwarnings('ignore')
 st.set_page_config(page_title="Netscore Sales Data",page_icon=":random:",initial_sidebar_state='expanded')
 st.title("Products Data")
 # Read Data
-df= pd.read_csv("D:\AIDemandPlanningJYResults300.zip",compression='zip')
+df= pd.read_csv("https://raw.githubusercontent.com/WMS-NETSCORE/Analytics-Streamlit/main/AIDemandPlanningJYResults300.zip",compression='zip')
 dfna=df.dropna(subset=['Class (no hierarchy)'])
 df1=dfna.drop_duplicates(keep='last')
 df1['Date Created']= pd.to_datetime(df1['Date Created'])
