@@ -29,20 +29,26 @@ with col1:
 with col2:
     item=st.selectbox("Select Item:",options=df1['Class (no hierarchy)'].value_counts().index)
 with col3:
-    metric=st.selectbox("Select Metric:",options=['Total Sales','Inventory'])
+    metric=st.selectbox("Select Metric:",options=['Total Items Sold','Inventory'])
 
 for j in y:
     if j in yr:
         for i in df1['Class (no hierarchy)'].value_counts().index:
             if i in item:
                 if i == 'RUG':
-                  if 'Total Sales' in metric:
+                  if 'Total Items Sold' in metric:
                          data =pd.DataFrame(df1.loc[(df1['Class (no hierarchy)'] == i) & (df1['year'] == j), ['Pattern','Color','month','Item']].groupby(['month','Pattern','Color']).count())
                          rg = pd.pivot_table(index=['Pattern','Color'], columns=['month'], values='Item', aggfunc=np.sum,data=data, fill_value=0)
                          rg['total'] = rg.sum(axis=1)
                          st.table(rg)
+                  else:
+                    break
                 else:
-                    data1 = pd.DataFrame(df1.loc[ (df1['Class (no hierarchy)'] == i) & (df1['year'] == j), ['Color', 'month', 'Item']].groupby(['month', 'Color']).count())
-                    rg1 = pd.pivot_table(index=['Color'], columns=['month'], values='Item', aggfunc=np.sum, data=data1,fill_value=0)
-                    rg1['total'] = rg1.sum(axis=1)
-                    st.table(rg1)
+                    if 'Total Items Sold' in metric:
+                        data1 = pd.DataFrame(df1.loc[ (df1['Class (no hierarchy)'] == i) & (df1['year'] == j), ['Color', 'month', 'Item']].groupby(['month', 'Color']).count())
+                        rg1 = pd.pivot_table(index=['Color'], columns=['month'], values='Item', aggfunc=np.sum, data=data1,fill_value=0)
+                        rg1['total'] = rg1.sum(axis=1)
+                        st.table(rg1)
+                    else:
+                        break
+                        
