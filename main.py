@@ -29,7 +29,7 @@ with col1:
 with col2:
     item=st.selectbox("Select Item:",options=df1['Class (no hierarchy)'].value_counts().index)
 with col3:
-    metric=st.selectbox("Select Item:",options=['Total Sales','Inventory'])
+    metric=st.selectbox("Select Metric:",options=['Total Sales','Inventory'])
 
 for j in y:
     if j in yr:
