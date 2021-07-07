@@ -19,7 +19,6 @@ df1['quet']=df1['Date Created'].dt.quarter
 df1['year']=df1['year'].astype(str)
 df1['Color']=df1['Color'].astype(str)
 y=['2017','2018','2019','2020','2021']
-df1.Pattern=df1.Pattern.str.split(";",expand=True)
 print(df1.columns)
 
 
