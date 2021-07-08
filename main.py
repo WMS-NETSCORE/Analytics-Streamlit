@@ -19,7 +19,7 @@ df1['quet']=df1['Date Created'].dt.quarter
 df1['year']=df1['year'].astype(str)
 df1['Color']=df1['Color'].astype(str)
 y=['2017','2018','2019','2020','2021']
-print(df1.columns)
+
 
 
 s = st.selectbox("Reports As of Today",("Select Options","By Item", "Top 10 Shipping Cities"))
